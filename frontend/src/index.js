@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // alert("Bingle Boop i loaded this")
     getCovidData()
     populateLetterFilters(letterSelect(), ALPHABETARRAY)
+    showCountry()
 } )
 
 
@@ -54,5 +55,8 @@ function populateLetterFilters(list, letters){
 }
 
 function showCountry(){
-    
+    button().addEventListener("click", (event) => {
+        event.preventDefault()
+        Country.displayCountryData(countrySelect().value)
+    })
 }

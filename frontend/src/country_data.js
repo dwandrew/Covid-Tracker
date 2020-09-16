@@ -30,6 +30,7 @@ class Country{
     static displayCountryData(country){
         let location = Country.all.find(c => c["country"] === country)
         let div = document.getElementById("country-div")
+        div.innerHTML =""
         let h3 = document.createElement("h3")
         h3.innerText = location["country"]
         let p = document.createElement("p")
@@ -39,7 +40,7 @@ class Country{
         Total Confirmed cases number : ${location["totalConfirmed"]} <br>
         Total Deaths number : ${location["totalDeaths"]} <br>
         Total Recovered number : ${location["totalRecovered"]}` 
-        div.appendChild(h1)
+        div.appendChild(h3)
         div.appendChild(p)
     }
 
