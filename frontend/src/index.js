@@ -25,11 +25,15 @@ function getCovidData(){
     .then(data => {
         console.log(data["Message"])
         if (!data["Countries"]){
-            alert(data["Message"])}
+            let div =document.getElementById('global-div')
+            div.innerHTML = data["Message"]
+        }
         else {
         Country.createAllCountries(data["Countries"])
         Global.create(data["Global"])
         Global.displayGlobalData()
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
         }
     })
 }
@@ -59,4 +63,18 @@ function showCountry(){
         event.preventDefault()
         Country.displayCountryData(countrySelect().value)
     })
+
+
+}
+
+function drawChart() {
+    let dataTable = [['Cases', 'Total Deaths Number']]
+    Country.all.forEach(country => dataTable.push([country["country"], country["totalDeaths"]]))
+    debugger
+    var data = google.visualization.arrayToDataTable(dataTable);
+    var options = {
+      title: 'Total Deaths Broken Down by Country'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
 }

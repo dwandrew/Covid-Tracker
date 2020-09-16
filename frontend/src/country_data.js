@@ -30,17 +30,32 @@ class Country{
     static displayCountryData(country){
         let location = Country.all.find(c => c["country"] === country)
         let div = document.getElementById("country-div")
+        let data = Global.globalData
         div.innerHTML =""
         let h3 = document.createElement("h3")
         h3.innerText = location["country"]
+        let h4 = document.createElement("h4")
+        let dateTime = location["date"].split("T")
+        h4.innerText = `Information up to date as of: ${dateTime[1].slice(0, -1)}, ${dateTime[0]}`
         let p = document.createElement("p")
         p.innerHTML = `New Confirmed cases number : ${location["newConfirmed"]} <br>
-        New Deaths number : ${location["newDeaths"]} <br>
+        <br>
+        New Deaths number : ${location["newDeaths"]} <br> 
+        Percent of Global Deaths: ${((location["newDeaths"]/data["NewDeaths"]) *100).toFixed(2)}%<br>
+        <br>
         New Recovered number : ${location["newRecovered"]} <br>
+        Percent of Global Recovered: ${((location["newRecovered"]/data["NewRecovered"]) *100).toFixed(2)}%<br>
+        <br>
         Total Confirmed cases number : ${location["totalConfirmed"]} <br>
+        Percent of Total Global Confirmed cases : ${((location["totalConfirmed"]/data["TotalConfirmed"]) *100).toFixed(2)}%<br>
+        <br>
         Total Deaths number : ${location["totalDeaths"]} <br>
-        Total Recovered number : ${location["totalRecovered"]}` 
+        Percent ot Total Global Deaths: ${((location["totalDeaths"]/data["TotalDeaths"]) *100).toFixed(2)}%<br>
+        <br>
+        Total Recovered number : ${location["totalRecovered"]}<br>
+        Percent of Total Recovered: ${((location["totalRecovered"]/data["TotalRecovered"]) *100).toFixed(2)}%<br>`
         div.appendChild(h3)
+        div.appendChild(h4)
         div.appendChild(p)
     }
 
