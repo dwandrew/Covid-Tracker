@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
+    <script src="src/country_data.js"></script>
+    <script src="src/global_data.js"></script>
     <title>Covid Tracker</title>
 </head>
 <body>
+
+
+    <div id = "global-div">
+        <h3>Global Numbers Data</h3>
+    </div>
+    
+    <form class= "country-select">
+        <label for="country-letter">Letter to filter by:</label>
+        <select name="country-letter" id="country-letter" class="letter-filter"> 
+
+        </select>
+        <select name="country" id="country" class="country-select">
+        <option value = "none" selected>None</option>
+        </select>
+
+        <button id = "show-data">View Country Data</button>
+    </form>
+    <div id = "country-div"></div>
     
 </body>
 </html>
