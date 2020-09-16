@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
     <script src="src/country_data.js"></script>
     <script src="src/global_data.js"></script>
@@ -28,7 +29,10 @@
         <button id = "show-data">View Country Data</button>
     </form>
     <div id = "country-div"></div>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div id= "chart-div">
+        <button id = "show-pie-chart">Show Chart</button>
+        <div id="piechart"></div>
+    </div>
     
 </body>
 <footer>Data retrieved from https://api.covid19api.com/</footer>

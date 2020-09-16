@@ -2,13 +2,13 @@ const ALPHABETARRAY = [" ","A","B","C","D","E","F","G","H","I","J","K","L","M","
 let letterSelect = () => document.getElementById("country-letter")
 let countrySelect = () => document.getElementById('country')
 let button = () => document.getElementById("show-data")
-
+let pieDisplay = false
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    // alert("Bingle Boop i loaded this")
     getCovidData()
     populateLetterFilters(letterSelect(), ALPHABETARRAY)
     showCountry()
+    displayChart()
 } )
 
 
@@ -63,17 +63,33 @@ function showCountry(){
         event.preventDefault()
         Country.displayCountryData(countrySelect().value)
     })
+}
 
+function displayChart(){
+    let button  = document.getElementById("show-pie-chart")
+    let chart = document.getElementById("piechart")
+    button.addEventListener('click', (event) => {
+        event.preventDefault()
+        if (pieDisplay === false){
+            pieDisplay = true
+            chart.style = "display: block"
+        }
+        else {
+            pieDisplay = false
+            chart.style = "display: none"
+        } 
+    })
 
 }
 
 function drawChart() {
     let dataTable = [['Cases', 'Total Deaths Number']]
     Country.all.forEach(country => dataTable.push([country["country"], country["totalDeaths"]]))
-    debugger
     var data = google.visualization.arrayToDataTable(dataTable);
     var options = {
-      title: 'Total Deaths Broken Down by Country'
+      title: 'Total Deaths Broken Down by Country',
+      width: 800,
+      height: 800
     };
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
     chart.draw(data, options);

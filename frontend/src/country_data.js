@@ -64,13 +64,3 @@ class Country{
 
 }
 
-// Country: "Swaziland";
-//     CountryCode: "SZ",
-//     Slug: "swaziland",
-//     NewConfirmed: 24,
-//     TotalConfirmed: 5128,
-//     NewDeaths: 0,
-//     TotalDeaths: 101,
-//     NewRecovered: 27,
-//     TotalRecovered: 4401,
-//     Date: "2020-09-16T06:35:28Z",
